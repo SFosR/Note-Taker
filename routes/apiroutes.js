@@ -20,16 +20,16 @@ router.get("/notes/:id", (req, res) => {
     readFromFile('./db/notes.json')
         .then((data) => JSON.parse(data))
         .then((json) => {
-            const result = json.filter((note) => notes.Id === Id);
+            const result = json.filter((note) => notes.id === id);
             return result.length > 0
             ? res.json(result)
             : res.json.apply("No note with that ID");
         });
 });
 
-// Delete note
+// Delete note - not working
 router.delete('/notes/:id', (req, res) => {
-    const noteId = req.params.Id;
+    const noteId = req.params.id;
     readFromFile('./db/notes.json')
       .then((data) => JSON.parse(data))
       .then((json) => {
